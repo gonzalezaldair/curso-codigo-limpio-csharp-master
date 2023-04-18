@@ -14,19 +14,19 @@ namespace ToDo
             do
             {
                 menuSelected = ShowMainMenu();
-                if ( (Menu) menuSelected == Menu.Add)
+                if ((Menu)menuSelected == Menu.Add)
                 {
                     ShowMenuAdd();
                 }
-                else if ( (Menu) menuSelected == Menu.Remove)
+                else if ((Menu)menuSelected == Menu.Remove)
                 {
                     ShowMenuRemove();
                 }
-                else if ( (Menu) menuSelected == Menu.List)
+                else if ((Menu)menuSelected == Menu.List)
                 {
                     ShowMenuTaskList();
                 }
-            } while ( (Menu) menuSelected != Menu.Exit);
+            } while ((Menu)menuSelected != Menu.Exit);
         }
         /// <summary>
         /// Show the main menu 
@@ -42,8 +42,8 @@ namespace ToDo
             Console.WriteLine("4. Salir");
 
             // Read line
-            string menuSelected  = Console.ReadLine();
-            return Convert.ToInt32(menuSelected );
+            string menuSelected = Console.ReadLine();
+            return Convert.ToInt32(menuSelected);
         }
 
         public static void ShowMenuRemove()
@@ -54,17 +54,14 @@ namespace ToDo
                 // Show current taks
                 ShowMenuTaskList();
 
-                string taskNumberToDelete  = Console.ReadLine();
+                string taskNumberToDelete = Console.ReadLine();
                 // Remove one position
-                int indexToRemove = Convert.ToInt32(taskNumberToDelete ) - 1;
-                if (indexToRemove > -1)
+                int indexToRemove = Convert.ToInt32(taskNumberToDelete) - 1;
+                if (indexToRemove > -1 && TaskList.Count > 0)
                 {
-                    if (TaskList.Count > 0)
-                    {
-                        string taskToRemove  = TaskList[indexToRemove];
-                        TaskList.RemoveAt(indexToRemove);
-                        Console.WriteLine("Tarea " + taskToRemove  + " eliminada");
-                    }
+                    string taskToRemove = TaskList[indexToRemove];
+                    TaskList.RemoveAt(indexToRemove);
+                    Console.WriteLine("Tarea " + taskToRemove + " eliminada");
                 }
             }
             catch (Exception)
@@ -91,12 +88,12 @@ namespace ToDo
             if (TaskList == null || TaskList.Count == 0)
             {
                 Console.WriteLine("No hay tareas por realizar");
-            } 
+            }
             else
             {
                 Console.WriteLine("----------------------------------------");
-                var indexTask=1;
-                TaskList.ForEach(p=> Console.WriteLine(indexTask++ + ". " + p));
+                var indexTask = 1;
+                TaskList.ForEach(p => Console.WriteLine(indexTask++ + ". " + p));
                 Console.WriteLine("----------------------------------------");
             }
         }
